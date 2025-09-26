@@ -1,3 +1,2 @@
 <?php
-echo "API PepiMix funcionando 🚀";
-?>
+echo "✅ Backend PepiMix funcionando en Render";
