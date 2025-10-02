@@ -23,11 +23,12 @@ if (!$data) {
 if (isset($data->id) && !empty($data->id)) {
     // 🔹 Actualizar orden existente
     $stmt = $pdo->prepare("UPDATE ordenes 
-        SET nombre=?, telefono=?, tipo=?, extras=?, cantidad=? 
+        SET nombre=?, telefono=?, grado_seccion=?, tipo=?, extras=?, cantidad=? 
         WHERE id=?");
     $stmt->execute([
         $data->nombre,
         $data->telefono,
+        $data->grado_seccion,
         $data->tipo,
         $data->extras,
         $data->cantidad,
@@ -38,11 +39,12 @@ if (isset($data->id) && !empty($data->id)) {
 
 } else {
     // 🔹 Insertar nueva orden
-    $stmt = $pdo->prepare("INSERT INTO ordenes (nombre, telefono, tipo, extras, cantidad) 
+    $stmt = $pdo->prepare("INSERT INTO ordenes (nombre, telefono, grado_seccion, tipo, extras, cantidad) 
         VALUES (?, ?, ?, ?, ?) RETURNING id");
     $stmt->execute([
         $data->nombre,
         $data->telefono,
+        $data->grado_seccion,
         $data->tipo,
         $data->extras,
         $data->cantidad
